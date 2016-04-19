@@ -15,8 +15,8 @@ $ npm install --save ghost-s3-compat
 
 ## Create a storage module
 
-Create a file `content/storage/ghost-s3/index.js` (manually those folders if
-they do not exist). Put this code inside of it.
+Create a file `content/storage/ghost-s3/index.js` (manually create those folders
+if they do not exist). Put this code inside of it.
 
 ```javascript
 'use strict';
