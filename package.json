@@ -1,14 +1,14 @@
 {
-  "name": "ghost-s3-storage",
-  "version": "0.2.2",
-  "description": "Store Ghost's media at AWS S3 storage. Modified version of ghost-s3 (https://www.npmjs.org/package/ghost-s3) and ghost-aws-s3 (https://github.com/kimar/ghost-aws-s3) ",
+  "name": "ghost-s3-compat",
+  "version": "0.1.0",
+  "description": "Store Ghost's images on S3 and proxy requests for local images to S3.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/muzix/ghost-s3.git"
+    "url": "https://github.com/spanishdict/ghost-s3-compat.git"
   },
   "keywords": [
     "ghost",
@@ -19,12 +19,12 @@
     "plugin",
     "blog"
   ],
-  "author": "Hoang Pham Huu <phamhuuhoang@gmail.com> (http://thucdon24.com/)",
+  "author": "Juan Caicedo <juan@spanishdict.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/muzix/ghost-s3/issues"
+    "url": "https://github.com/spanishdict/ghost-s3-compat/issues"
   },
-  "homepage": "https://github.com/muzix/ghost-s3",
+  "homepage": "https://github.com/spanishdict/ghost-s3-compat",
   "dependencies": {
     "aws-sdk": "^2.1.6",
     "aws-sdk-promise": "^0.0.2",
