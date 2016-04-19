@@ -20,7 +20,7 @@ they do not exist). Put this code inside of it.
 
 ```javascript
 'use strict';
-module.exports = require('ghost-s3-compat);
+module.exports = require('ghost-s3-compat');
 ```
 
 ## Configuration
