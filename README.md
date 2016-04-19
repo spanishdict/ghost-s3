@@ -1,50 +1,53 @@
-#UPDATE
-Update version 0.2.2 for Ghost 0.6.0
+# Ghost S3 Storage, compatability mode
 
-# Ghost S3 Storage
+This module allows you to read and write images from Amazon S3 instead of
+storing them locally.
 
-This module allows you to store media file at Amazon S3 instead of storing at local machine, especially helpful for ghost blog hosted at heroku (no local storage). Work with latest version 0.6.0 of Ghost! (Use module version 0.1.7 for Ghost version < 0.6.0)
+After installing, new images that you save will use an absolute URL to S3. Any
+requests to `/content/images/` will be proxied to S3, so that any previous
+images in your blog will not be affected.
 
 ## Installation
 
-    npm install --save ghost-s3-storage
+```bash
+$ npm install --save ghost-s3-compat
+```
 
-## Create storage module
+## Create a storage module
 
-Create index.js file with folder path 'content/storage/ghost-s3/index.js' (manually create folder if not exist)
+Create a file `content/storage/ghost-s3/index.js` (manually those folders if
+they do not exist). Put this code inside of it.
 
-    'use strict';
-    module.exports = require('ghost-s3-storage');
+```javascript
+'use strict';
+module.exports = require('ghost-s3-compat);
+```
 
 ## Configuration
 
-Create new Amazon S3 bucket and new IAM User with permissions allowed to put and get object from that bucket. Remember saving ACCESS_KEY and ACCESS_SECRET_KEY.
+Create new IAM User with permissions to get object from that bucket. Save the
+`ACCESS_KEY` and `ACCESS_SECRET_KEY`.
 
-Add `storage` block to file `config.js` in each environment as below:
+In `config.js`, add a `storage` block for each environment.
 
     storage: {
         active: 'ghost-s3',
         'ghost-s3': {
             accessKeyId: 'Put_your_access_key_here',
             secretAccessKey: 'Put_your_secret_key_here',
-            bucket: 'Put_your_bucket_name',
-            region: 'Put_your_bucket_region',
-            assetHost: 'Put_your_cdn_url*'
+            bucket: 'Put_your_bucket_name_here',
+            region: 'Put_your_bucket_region_here'
         }
     },
 
-**Note 1**
-You can use assetHost config to specify S3 bucket full-url in virtual host style, path style or custom domain (http://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html)
+### Asset host
 
-- Virtual-host style example: ['https://blogthucdon24bucket.s3.amazonaws.com/2015/Feb/follow_your_dreams1-1424940431463.jpg'](https://blogthucdon24bucket.s3.amazonaws.com/2015/Feb/follow_your_dreams1-1424940431463.jpg)
-
-- Path style example: ['https://s3-ap-southeast-1.amazonaws.com/blogthucdon24bucket/2015/Feb/follow_your_dreams1-1424940431463.jpg'](https://s3-ap-southeast-1.amazonaws.com/blogthucdon24bucket/2015/Feb/follow_your_dreams1-1424940431463.jpg)
-
-Restart app then test upload new image in blog post. Image will be store at newly S3 bucket.
+You can add `assetHost` to your config to specify a virtual host url. For more
+information, [read this section](http://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html)
+in the AWS docs.
 
 ## Copyright & License
 
-Copyright (c) 2015  Hoang Pham Huu <phamhuuhoang@gmail.com>
+Copyright (c) 2015 Hoang Pham Huu <phamhuuhoang@gmail.com>
 
 Released under the [MIT license](https://github.com/muzix/ghost-s3/blob/master/LICENSE).
-
