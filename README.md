@@ -48,6 +48,7 @@ in the AWS docs.
 
 ## Copyright & License
 
-Copyright (c) 2010-2016 Curiosity Media, Inc.
+Original work Copyright (c) 2015 Hoang Pham Huu <phamhuuhoang@gmail.com>
+Modified work Copyright (c) 2016 Curiosity Media, Inc.
 
 Released under the [MIT license](https://github.com/muzix/ghost-s3/blob/master/LICENSE).
