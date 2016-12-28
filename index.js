@@ -46,7 +46,7 @@ function getTargetName(image, targetDir) {
     var ext = path.extname(image.name);
     var name = path.basename(image.name, ext).replace(/\W/g, '_');
 
-    return targetDir + name + '-' + Date.now() + ext;
+    return targetDir + '/' + name + '-' + Date.now() + ext;
 }
 
 function validOptions(opts) {
@@ -109,7 +109,7 @@ S3Store.prototype.serve = function serve() {
     return function (req, res, next) {
         var params = {
             Bucket: options.bucket,
-            Key: req.path.replace(/^\//, '')
+            Key: req.path.replace(/^\//, '').replace(/\/$/, '')
         };
 
         s3.getObject(params)
